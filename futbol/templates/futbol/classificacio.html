@@ -1,0 +1,7 @@
+<h1>{{ lliga.nom }}</h1>
+<h2>Classificació</h2>
+<ol>
+  {% for equip in classificacio %}
+  <li>{{equip.1}} ({{equip.0}} punts)</li>
+  {% endfor %}
+</ol>

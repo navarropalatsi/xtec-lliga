@@ -41,8 +41,11 @@ class Partit(models.Model):
     local = models.ForeignKey(Equip, on_delete=models.CASCADE, related_name='partits_local')
     visitant = models.ForeignKey(Equip, on_delete=models.CASCADE, related_name='partits_visitant')
     data = models.DateTimeField()
-    gols_local = models.IntegerField(default=0)
-    gols_visitant = models.IntegerField(default=0)
+    def gols_local(self):
+        return self.events.filter(tipus='GOL', equip=self.local).count()
+    def gols_visitant(self):
+        return self.events.filter(tipus='GOL', equip=self.visitant).count()
+
     finalitzat = models.BooleanField(default=False)
     
     class Meta:
