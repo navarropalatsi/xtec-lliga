@@ -45,6 +45,8 @@ class Partit(models.Model):
         return self.events.filter(tipus='GOL', equip=self.local).count()
     def gols_visitant(self):
         return self.events.filter(tipus='GOL', equip=self.visitant).count()
+    def resultat(self):
+        return f"{self.gols_local()} - {self.gols_visitant()}"
 
     finalitzat = models.BooleanField(default=False)
     

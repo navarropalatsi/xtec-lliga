@@ -21,5 +21,7 @@ from . import views
 app_name = "futbol"
 urlpatterns = [
   path("classificacio", views.classificacio_menu, name="classificacio_menu"),
+  path("taula_partits", views.taula_partits_menu, name="taula_partits_menu"),
+  path("taula_partits/<int:lliga_id>/", views.taula_partits, name="taula_partits"),
   path("classificacio/<int:lliga_id>/", views.classificacio, name="classificacio"),
 ]

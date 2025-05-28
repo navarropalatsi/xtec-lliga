@@ -1,0 +1,69 @@
+<style>
+    #taula_partits {
+        border-collapse: collapse;
+        width: 100%;
+        display: block;
+    }
+
+    .vertical_text {
+        writing-mode: vertical-lr;
+        width: 35px;
+    }
+
+    .local_vs_local {
+        background: grey;
+    }
+
+    .nom_equip {
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    tbody .nom_equip {
+        width: 250px;
+    }
+
+    .resultat {
+        font-size: 0.8em;
+    }
+
+    th,
+    td {
+        border: 1px solid black;
+        text-align: center;
+    }
+
+    .no-border {
+        border: none;
+    }
+</style>
+<h1>{{ lliga.nom }}</h1>
+<h2>Taula partits</h2>
+<table id="taula_partits">
+    <thead>
+        <tr>
+            <th class="no-border"></th>
+            {% for equip in resultats %}
+            <th class="vertical_text nom_equip">{{ equip }}</th>
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for nom_equip, fila_local in resultats.items %}
+        <tr>
+            <td class="nom_equip">{{ nom_equip }}</td>
+            {% for nom_visitant, resultat in fila_local.resultats.items %}
+            <td
+                class="resultat {% if nom_equip == nom_visitant %} local_vs_local {% endif %}"
+            >
+                {% if resultat is not None %}
+                <span>{{ resultat }}</span>
+                {% else %}
+                <span></span>
+                {% endif %}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
