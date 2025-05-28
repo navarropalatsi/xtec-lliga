@@ -48,7 +48,10 @@ def taula_partits(request, lliga_id):
             partit = lliga.partits.filter(local=local, visitant=visitant).first()
             if partit:
                 # si existeix, afegim el resultat
-                fila_local["resultats"][visitant.nom] = partit.resultat()
+                fila_local["resultats"][visitant.nom] = {
+                    "gols_local": partit.gols_local(),
+                    "gols_visitant": partit.gols_visitant()
+                }
             else:
                 # si no existeix, afegim un resultat buit
                 fila_local["resultats"][visitant.nom] = None

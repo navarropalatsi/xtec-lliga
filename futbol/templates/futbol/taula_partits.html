@@ -9,9 +9,23 @@
         writing-mode: vertical-lr;
         width: 35px;
     }
+    
+    .resultat {
+        font-size: 0.8em;
+    }
 
     .local_vs_local {
-        background: grey;
+        background: black;
+    }
+
+    .victoria {
+        background: green;
+        color: white;
+    }
+
+    .derrota {
+        background: darkred;
+        color: white;
     }
 
     .nom_equip {
@@ -21,10 +35,6 @@
 
     tbody .nom_equip {
         width: 250px;
-    }
-
-    .resultat {
-        font-size: 0.8em;
     }
 
     th,
@@ -54,10 +64,10 @@
             <td class="nom_equip">{{ nom_equip }}</td>
             {% for nom_visitant, resultat in fila_local.resultats.items %}
             <td
-                class="resultat {% if nom_equip == nom_visitant %} local_vs_local {% endif %}"
+                class="resultat {% if nom_equip == nom_visitant %} local_vs_local {% endif %} {% if resultat is not None and resultat.gols_local > resultat.gols_visitant %} victoria {% elif resultat is not None and resultat.gols_local != resultat.gols_visitant %} derrota {% endif %}"
             >
                 {% if resultat is not None %}
-                <span>{{ resultat }}</span>
+                <span>{{ resultat.gols_local }} - {{ resultat.gols_visitant }}</span>
                 {% else %}
                 <span></span>
                 {% endif %}

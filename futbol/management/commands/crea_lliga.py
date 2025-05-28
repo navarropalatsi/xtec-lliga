@@ -84,7 +84,7 @@ class Command(BaseCommand):
                     )
                     partit.save()
 
-                    for i in range(randint(0,10)):
+                    for i in range(randint(0,20)):
                         tipus = faker.random_element(elements=Event.TIPUS_EVENT)[0]
                         local_o_visitant = faker.random_element(elements=["local","visitant"])
                         if local_o_visitant == "local":

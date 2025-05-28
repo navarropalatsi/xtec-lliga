@@ -70,6 +70,14 @@ class Event(models.Model):
         ('TARGETA_GROGA', 'Targeta Groga'),
         ('TARGETA_VERMELLA', 'Targeta Vermella'),
     ]
+
+    TIPUS_EVENT_MINIMS = [
+        ('GOL', 'Gol'),
+        ('FALTA', 'Falta'),
+        ('MANS', 'Mans'),
+        ('TARGETA_GROGA', 'Targeta Groga'),
+        ('TARGETA_VERMELLA', 'Targeta Vermella'),
+    ]
     
     partit = models.ForeignKey(Partit, on_delete=models.CASCADE, related_name='events')
     temps = models.TimeField()
