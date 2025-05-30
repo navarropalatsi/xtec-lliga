@@ -4,4 +4,4 @@ def index(request):
     """
     Render the index page of the application.
     """
-    return render(request, 'index.html')
+    return render(request, 'lliga/index.html')
