@@ -20,6 +20,7 @@ from . import views
 
 app_name = "futbol"
 urlpatterns = [
+  path("", views.index, name="index"),
   path("classificacio", views.classificacio_menu, name="classificacio_menu"),
   path("taula_partits", views.taula_partits_menu, name="taula_partits_menu"),
   path("taula_partits/<int:lliga_id>/", views.taula_partits, name="taula_partits"),

@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django import forms
 from .models import Lliga
 
+def index(request):
+    return render(request, 'lliga/index.html')
 
 # Create your views here.
 def classificacio(request, lliga_id):
